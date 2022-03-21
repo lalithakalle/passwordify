@@ -1,0 +1,69 @@
+{% extends "bootstrap/base.html" %}
+
+{% block content %}
+        
+    <div class="jumbotron">
+        <div class="container">
+            <p class="lead">Enter three words you can remember that have at least 4 characters:</p>
+            <form method="POST" class="horizontal">
+                <div class="form-group">
+                    <div class="col-md-3">
+                      <input type="text" name="word1" class="form-control" placeholder="e.g cats" aria-label="Word 1" minlength="4" required>
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" name="word2" class="form-control" placeholder="e.g apple" aria-label="Word 2" minlength="4" required>
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" name="word3" class="form-control" placeholder="e.g ring" aria-label="Word 3" minlength="4" required>
+                    </div>
+                    <div class="col-md-3">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+        {% if passwords %} 
+
+            <div class="container">
+                <p class="lead">Here’s a strong password: <strong>{{ passwords[0] }}</strong></p>
+                <p class="lead">Do not use it anywhere. Read the following to understand how we came up with this password, and use a similar logic to make passwords from words you can remember, without telling anyone! This is for educational purposes only.</p>
+            </div>
+
+            <div class="container">
+                <p class="lead"><strong> Why is this a strong password? </p>
+                <p class="lead">Based on the <a href="https://www.cylab.cmu.edu/news/2020/10/20-passwordpolicy.html" target="_blank"> latest research from Carnegie Mellon University</a>, strong passwords have at least 12 characters (the longer, the better), do not contain any dictionary words (the hackers use databases with common words), and have uppercase and special characters at non-obvious places (the hackers know if you put special characters in the obvious places, like replacing a 5 with an S). </p>
+                <p class="lead">You can copy the password above and paste it in the <a href="https://cups.cs.cmu.edu/meter/" target="_blank"> Carnegie Mellon Password Strength Meter </a> to see how strong it is, and tweak it to make it even more stronger. </p>
+
+                <p class="lead"><strong>How can I remember this password?</strong></p>
+                <p class="lead">Here’s the logic we used to make this password from the three words you entered: </p>
+                <p class="lead"> First, we capitalized the words. That you can easily remember! It's better to capitalize random letters of each word, but this password does not include that because there is already enough complexity which makes it strong. </p>
+                <p class="lead"> Then, we inserted a number in the middle of each word, to make it unidentifiable as a dictionary word. For example, <strong> ca8ts </strong> is harder to guess than <strong> cats</strong>. You can insert any three numbers you like and remember that. </p>
+                <p class="lead"> Finally, we inserted special characters between the words. You can pick your own special characters. </p>
+                <p class="lead"> In combination, this password is long and complex enough that it is <strong> hard to guess</strong>, but is also based on three words you like, so it’s <strong> easy to remember</strong>. </p>
+
+                <p class="lead"><strong>Why not just use "{{ passwords[1] }}"? </strong></p>
+                <p class="lead">Because it’s too easy to guess, unless you chose three words that don’t exist in the dictionary. Even then, we recommend you insert some numbers and special characters somewhere in the middle so they increase in complexity. You can play around with the <a href="https://cups.cs.cmu.edu/meter/" target="_blank"> Carnegie Mellon Password Strength Meter tool</a>. </p>
+                
+                <p class="lead"><strong>Why three words? Why not just two words and numbers and special characters? </strong></p>
+                <p class="lead">The longer the password, the harder it is to guess, and the stronger it is. It takes exponentially more effort for hackers to crack a longer password. This is really really important.  </p>
+                
+                <p class="lead"><strong>Why not just {{ passwords[6] }}?</strong></p>
+                <p class="lead">Never ever use these! It’s very common for people to simply add 123 or 123! to their favorite words and use that string as a password, but such passwords are the weakest and can be guessed very easily. Millions of passwords have been breached and stored in hacker databases, and xxx123! are very common in them. </p>
+                
+                <p class="lead"><strong>Why are strong passwords important? </strong></p>
+                <p class="lead">Because passwords are stolen all the time, and if your password is weak, it can be guessed and your accounts can be breached. </p> 
+                <p class="lead"> Did you know that you can actually find out if any of your existing passwords may have been breached? Go to <a href="https://monitor.firefox.com/" target="_blank"> https://monitor.firefox.com/ </a> and enter your email address. It will show you all your passwords that may have been breached. </p>
+
+                <p class="lead"><strong>What else can I do to keep my passwords safe? </strong></p>
+                <p class="lead">First, use strong passwords for all accounts with the logic explained above. If any of your online accounts support social logins via Google or Facebook, use that and avoid creating a password!</p>
+                <p class="lead">Second, use unique passwords for each of your online accounts. Do not use the same password for multiple accounts. If one is breached, you don’t want the others to be exposed as well. </p>
+                <p class="lead">Third, enable two-factor authentication when possible. Even if your account is breached, two-factor allows you to confirm when someone is trying to login to your accounts–that’s a good safety mechanism. </p>
+                <p class="lead">Finally, keep an eye on password breaches by registering at <a href="https://monitor.firefox.com/" target="_blank"> https://monitor.firefox.com/ </a>. It will email you if any of your passwords were found in a breach, and you can change them immediately. </p>
+            </div>
+
+        {% endif %}
+
+    {% endblock %}
+   
